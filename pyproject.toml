@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clawforge"
+version = "0.1.0"
+description = "Interactive benchmark for CLI agents operating over persistent workflow state"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+  {name = "ClawForge contributors"},
+]
+keywords = ["benchmark", "agents", "cli", "evaluation", "openclaw"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+google = [
+  "google-api-python-client>=2.130.0",
+  "google-auth>=2.29.0",
+  "google-auth-oauthlib>=1.2.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["openclaw_env*"]
+
+[tool.setuptools.package-data]
+openclaw_env = [
+  "data/**/*",
+]

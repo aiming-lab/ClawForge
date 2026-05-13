@@ -1,4 +1,37 @@
+# OS / editor
 .DS_Store
+.vscode/
+.idea/
+
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Logs and local reports
+*.log
+*.out
+*.tmp
+tmp/
+
+# Local trajectories and ad hoc outputs
+openclaw_env/data/trajectories/
+*.jsonl
+
+# Secrets and local credentials
 .env
 .env.*
 *.pem
@@ -6,6 +39,25 @@
 id_rsa
 id_ed25519
 client_secret.json
+client_secret_*.json
 google_calendar_token.json
 google_email_token.json
 google_tasks_token.json
+
+# LaTeX and paper build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.nav
+*.out.ps
+*.pdfsync
+*.snm
+*.synctex.gz
+*.toc
+
+# Node / frontend leftovers
+node_modules/

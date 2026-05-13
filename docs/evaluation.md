@@ -10,7 +10,7 @@ The main evaluation command is:
 python examples/train_and_eval.py
 ```
 
-The flagship benchmark family is typically run with:
+The flagship hard benchmark is typically run with:
 
 ```bash
 python examples/train_and_eval.py \
@@ -21,11 +21,11 @@ python examples/train_and_eval.py \
   --max-steps 20
 ```
 
-The CLI default step budget is `15`, but benchmark-facing runs should usually set `--max-steps` explicitly. In this repository, `20` is the common evaluation protocol for standard hard runs, while some manuscript-style full-history comparisons use `25`.
+The CLI default step budget is `15`, but documented benchmark-facing runs in this repository generally set `--max-steps` explicitly.
 
 ## Common commands
 
-Hard benchmark with a hosted OpenAI-compatible endpoint:
+Hosted OpenAI-compatible endpoint:
 
 ```bash
 python examples/train_and_eval.py \
@@ -71,37 +71,23 @@ Structured reports include provider-aware fields such as:
 
 The rollout client supports three history policies:
 
-- `full`: send the full message history
-- `summary`: force the benchmark's compressed-history path
-- `auto`: use the benchmark's automatic trimming logic
+- `full`: send the full interaction history
+- `summary`: force the compressed-history path
+- `auto`: use the benchmark's trimming logic
 
-The current default rollout policy is `full`. Example:
+The current default rollout policy is `full`.
 
-```bash
-python examples/train_and_eval.py \
-  --agent llm \
-  --llm-provider openai \
-  --model claude-sonnet-4.6 \
-  --task-prefix hard_decision_workflow_ \
-  --split total \
-  --mode multi \
-  --llm-history-mode full \
-  -v
-```
-
-## Metrics and reports
+## Metrics
 
 The evaluator reports:
 
 - full-pass accuracy
-- partial-credit average score
-- scenario-level breakdowns
+- partial-credit average score (`avg_score`)
+- scenario-level summaries
 - primary-ability and overlapping-tag summaries
 - provider-aware accounting such as `provider_failures` and `provider_impacted_tasks`
 
-Provider-aware fields are useful when comparing interactive runs across external endpoints, especially when retries, filtered responses, or compact fallbacks affect the rollout without fully invalidating the task.
-
-`avg_score` is the dataset mean of the per-task weighted aggregate score computed by the same result-first evaluator used for full-pass accuracy. A task can therefore receive substantial partial credit even when it does not satisfy every required check.
+`avg_score` is the dataset mean of the per-task weighted aggregate score computed by the same evaluator used for full-pass accuracy. A run can therefore receive substantial partial credit even when it does not satisfy every required check.
 
 ## Baseline agents
 

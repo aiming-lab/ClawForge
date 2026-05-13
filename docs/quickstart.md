@@ -1,6 +1,6 @@
 # Quick Start
 
-Back to [README](../README.md) · See also [evaluation.md](evaluation.md) and [openclaw-setup.md](openclaw-setup.md)
+Back to [README](../README.md) · See also [evaluation.md](evaluation.md), [execution-modes.md](execution-modes.md), and [release-snapshot.md](release-snapshot.md)
 
 ## Install
 
@@ -9,13 +9,19 @@ pip install -e .
 pip install -e ".[dev]"
 ```
 
+Optional Google-backed provider dependencies for online Calendar, Gmail, or Tasks paths:
+
+```bash
+pip install -e ".[google]"
+```
+
 ## Generate the benchmark snapshot
 
 ```bash
 python scripts/generate_tasks.py
 ```
 
-Generated outputs are written under `openclaw_env/data/{tasks,datasets}`.
+By default this writes under `openclaw_env/data/{tasks,datasets}`.
 
 ## Run a first hard-benchmark evaluation
 
@@ -39,11 +45,11 @@ python examples/train_and_eval.py \
   --save-report ./tmp/hard_test_report.json
 ```
 
-This command uses a **recommended hard-benchmark protocol** (`--task-prefix hard_decision_workflow_ --mode multi --max-steps 20`) rather than the raw CLI defaults. The CLI default step budget is lower (`--max-steps 15`), so benchmark-facing runs should set the budget explicitly.
+This uses the documented benchmark-facing protocol rather than the raw CLI defaults. The CLI default step budget is `15`, while standard hard-benchmark runs in this repository typically use `20`.
 
-## Run Claude on AWS Bedrock through LiteLLM
+## Run Claude through a local LiteLLM proxy
 
-Start a local LiteLLM proxy and export its credentials:
+Export the proxy settings:
 
 ```bash
 export LITELLM_PROXY_KEY="your-litellm-proxy-key"
@@ -67,14 +73,9 @@ python examples/train_and_eval.py \
 
 When `--llm-provider openai` is used with a `claude-*` model name, the client defaults to the local LiteLLM proxy URL and reads `LITELLM_PROXY_KEY` unless `--llm-base-url` or `--llm-api-key-env` is overridden.
 
-The current default LLM rollout policy uses full interaction history. To override it, pass:
-
-- `--llm-history-mode full`
-- `--llm-history-mode summary`
-- `--llm-history-mode auto`
-
 ## Common next steps
 
-- For additional evaluation commands and output interpretation, see [evaluation.md](evaluation.md).
-- For OpenClaw CLI, gateway, and provider bootstrap, see [openclaw-setup.md](openclaw-setup.md).
-- For changing hard-scenario counts or regenerating different benchmark snapshots, see [task-generation.md](task-generation.md).
+- [evaluation.md](evaluation.md): output interpretation and comparison commands
+- [execution-modes.md](execution-modes.md): exact mode behavior
+- [openclaw-setup.md](openclaw-setup.md): `real` and `hybrid` prerequisites
+- [task-generation.md](task-generation.md): generator flags and release-profile overrides
