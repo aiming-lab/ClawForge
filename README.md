@@ -222,16 +222,9 @@ If you use ClawForge, cite both the repository and the accompanying paper.
 }
 ```
 
-Machine-readable citation metadata is in [CITATION.cff](CITATION.cff).
-
 ---
 
 ## License
 
 This repository is released under the [MIT License](LICENSE).
 
----
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the local setup and test workflow.
