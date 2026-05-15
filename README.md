@@ -8,12 +8,11 @@
 
 ClawForge is an interactive benchmark for CLI-style agents. It measures whether an agent can inspect persistent workflow state, issue commands step by step, and complete tasks through correct state changes and observable side effects.
 
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Hard Scenarios](https://img.shields.io/badge/Hard%20Scenarios-17-0A7EA4)](docs/hard-benchmark.md)
 [![Hard Tasks](https://img.shields.io/badge/Hard%20Tasks-362-0A7EA4)](docs/hard-benchmark.md)
 [![Total Tasks](https://img.shields.io/badge/Total%20Tasks-1616-2F6B3B)](docs/release-snapshot.md)
-[![Default Mode](https://img.shields.io/badge/Default%20Mode-multi-5C4B8A)](docs/execution-modes.md)
+[![arXiv](https://img.shields.io/badge/arXiv-2605.14133-b31b1b.svg)](https://arxiv.org/abs/2605.14133)
 
 [Quick Start](#quick-start) · [Evaluation](docs/evaluation.md) · [Execution Modes](docs/execution-modes.md) · [OpenClaw Setup](docs/openclaw-setup.md) · [Task Generation](docs/task-generation.md) · [Docs Index](docs/README.md)
 
@@ -212,11 +211,14 @@ Start with [docs/README.md](docs/README.md) for goal-oriented routing:
 If you use ClawForge, cite both the repository and the accompanying paper.
 
 ```bibtex
-@software{clawforge,
-  title = {ClawForge},
-  author = {ClawForge contributors},
-  year = {2026},
-  url = {REPLACE_WITH_PUBLIC_REPO_URL}
+@misc{lai2026clawforgegeneratingexecutableinteractive,
+      title={ClawForge: Generating Executable Interactive Benchmarks for Command-Line Agents}, 
+      author={Yuxiang Lai and Peng Xia and Haonian Ji and Kaiwen Xiong and Kaide Zeng and Jiaqi Liu and Fang Wu and Jike Zhong and Zeyu Zheng and Cihang Xie and Huaxiu Yao},
+      year={2026},
+      eprint={2605.14133},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2605.14133}, 
 }
 ```
 
